@@ -48,15 +48,14 @@ public class ModelJTable extends AbstractTableModel {
         // A vous de jouer
 
         colonnes = new String[]{"Numéro","Nom","Prix","Quantité"};
-        lignes = new Object[lesMedicaments.size()][5];
+        lignes = new Object[lesMedicaments.size()][4];
         int i = 0;
         for(Medicament med : lesMedicaments)
         {
             lignes[i][0] = med.getNumero();
             lignes[i][1] = med.getNom();
             lignes[i][2] = med.getPrix();
-            lignes[i][3] = med.getQuantite();
-            lignes[i][4] = 0;
+            lignes[i][3] = 0;
             i++;
         }
         fireTableChanged(null);

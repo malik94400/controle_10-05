@@ -94,7 +94,7 @@ public class FrmPrescrire extends JFrame
                     int qte = Integer.parseInt(tblMedicaments.getValueAt(i,3).toString());
                     if (qte != 0)
                     {
-                        ctrlPrescrire.InsertPrescrire(idMedecin, idPatient,qte,idDate);
+                        ctrlConsultation.InsertConsultation();
                     }
                 }
 
