@@ -51,6 +51,21 @@ public class CtrlPatient
 
         // A vous de jouer
 
+        try {
+            ps = cnx.prepareStatement("SELECT idPatient\n" +
+                    "FROM patient\n" +
+                    "WHERE nomPatient = ?");
+
+            ps.setString(1,nomPat);
+            rs = ps.executeQuery();
+            rs.next();
+            numPat = rs.getInt(1);
+        }
+        catch (SQLException e)
+        {
+            throw new RuntimeException(e);
+        }
+
         return numPat;
     }
 }

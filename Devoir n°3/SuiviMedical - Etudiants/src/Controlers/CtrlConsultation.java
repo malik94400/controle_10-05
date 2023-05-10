@@ -44,5 +44,18 @@ public class CtrlConsultation
     public void InsertConsultation(int idConsult, String dateConsultation, int numPatient,int numMedecin)
     {
         // A vous de jouer
+
+        try {
+            ps = cnx.prepareStatement("INSERT INTO consultations VALUES (?,?,?,?)");
+            ps.setInt(1, idConsult);
+            ps.setString(2,dateConsultation);
+            ps.setInt(3, numPatient);
+            ps.setInt(4, numMedecin);
+            ps.executeUpdate();
+            ps.close();
+            rs.close();
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
     }
-}
+    }

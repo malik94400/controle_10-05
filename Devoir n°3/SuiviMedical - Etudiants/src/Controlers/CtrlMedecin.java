@@ -41,7 +41,6 @@ public class CtrlMedecin
         {
             throw new RuntimeException(e);
         }
-
         return lesMedecins;
     }
 
@@ -50,7 +49,20 @@ public class CtrlMedecin
         int numMed = 0;
 
         // A vous de jouer
+        try {
+            ps = cnx.prepareStatement("SELECT idMedecin\n" +
+                    "FROM medecin\n" +
+                    "WHERE nomMedecin = ?");
 
+            ps.setString(1,nomMed);
+            rs = ps.executeQuery();
+            rs.next();
+            numMed = rs.getInt(1);
+        }
+        catch (SQLException e)
+        {
+            throw new RuntimeException(e);
+        }
         return numMed;
     }
 }

@@ -75,26 +75,28 @@ public class FrmPrescrire extends JFrame
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
         btnInserer.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
                 // A vous de jouer
 
+                int idPatient =ctrlPatient.getIdPatientByName(cboPatients.getSelectedItem().toString());
+                int idMedecin =ctrlMedecin.getIdMedecinByName(cboMedecins.getSelectedItem().toString());
+                int idPrescrire = Integer.parseInt(txtNumeroConsultation.getText());
+                int idDate = Integer.parseInt(dcDateConsultation.getDate().toString());
 
+                ctrlPrescrire.InsertPrescrire(idPrescrire,idPatient,idMedecin,idDate);
+
+                for (int i =0 ; i<tblMedicaments.getRowCount(); i++)
+                {
+                    String idMed = tblMedicaments.getValueAt(i, 0).toString();
+                    int qte = Integer.parseInt(tblMedicaments.getValueAt(i,3).toString());
+                    if (qte != 0)
+                    {
+                        ctrlPrescrire.InsertPrescrire(idMedecin, idPatient,qte,idDate);
+                    }
+                }
 
 
 

@@ -43,10 +43,6 @@ public class CtrlMedicament
         {
             throw new RuntimeException(e);
         }
-
-
-
-
         return lesMedicaments;
     }
 }
